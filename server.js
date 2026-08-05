@@ -7,7 +7,6 @@ app.get("/", (req, res) => {
     res.send("Server is running!");
 });
 
-// Знайти UserId за ніком
 app.get("/userid/:username", async (req, res) => {
     const response = await fetch("https://users.roblox.com/v1/usernames/users", {
         method: "POST",
@@ -24,7 +23,6 @@ app.get("/userid/:username", async (req, res) => {
     res.json(data);
 });
 
-// Отримати друзів
 app.get("/friends/:id", async (req, res) => {
     const response = await fetch(
         `https://friends.roblox.com/v1/users/${req.params.id}/friends`
@@ -35,4 +33,7 @@ app.get("/friends/:id", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Started"));
+
+app.listen(PORT, () => {
+    console.log("Started");
+});
